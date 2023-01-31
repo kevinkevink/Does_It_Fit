@@ -1,10 +1,12 @@
 import './App.css';
 import Toolbar from './Toolbar';
+import Window from './Window';
 
 function App() {
   return (
-    <div id = 'bruh'>
+    <div id = 'Outline'>
       <Toolbar/>
+      <Window/>
     </div>
   );
 }

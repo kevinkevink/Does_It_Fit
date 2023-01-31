@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Toolbar.css';
+import LineTool from './LineTool'
 
 class Toolbar extends React.Component{
   constructor(props){
@@ -9,7 +10,7 @@ class Toolbar extends React.Component{
   render(){
     return(
     <div id='bar'>
-      <p style={{margin: 0}}>Hello, Champ</p>
+      <LineTool/>
     </div>
     );
 
