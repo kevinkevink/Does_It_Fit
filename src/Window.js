@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Window.css';
+import buildingState from './buildingState';
 
 class Window extends React.Component{
   constructor(props){
@@ -8,8 +9,10 @@ class Window extends React.Component{
       point: [0, 0],
       height: 0,
       width: 0,
-      scale: 1
+      scale: 1,
+      buildState: new buildingState()
     };
+
   }
 
   componentDidMount(){
@@ -39,11 +42,15 @@ class Window extends React.Component{
     if(c !== null){
       var ctx = c.getContext("2d");
       ctx.lineWidth = 5;
+      var objs = this.state.buildState.getObjectsInScreen(this.state.point, this.state.width, 
+        this.state.height, this.state.scale);
       ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.lineTo(3000, 150);
-      ctx.moveTo(50, 0);
-      ctx.lineTo(450, 150);
+      for(var obj in objs){
+        let startP = obj['start']
+        let endP = obj['end']
+        ctx.moveTo(startP[0], startP[1]);
+        ctx.lineTo(endP[0], endP[1]);
+      } 
       ctx.stroke();
     }
   }
