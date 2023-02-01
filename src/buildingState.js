@@ -5,10 +5,10 @@ class buildingState{
 
   //Can be more efficient by keeping two arrays in memmory
   getObjectsInScreen(point, width, height, scale){
-    let returns = []
+    var returns = []
     var endPoint = [point[0] + scale * width, point[1] + scale*height]
-    for(var obj in this.objs){
-      console.log(obj);
+    for(var i = 0; i < this.objs.length; i++){
+      let obj = this.objs[i]
       if(obj.type === 'l'){
         let xFails = (obj.start[0] < point[0] && obj.start[0] < endPoint[0]) ||
         (obj.start[0] > point[0] && obj.start[0] > endPoint[0]);

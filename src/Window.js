@@ -41,16 +41,18 @@ class Window extends React.Component{
     var c = document.getElementById('canvas');
     if(c !== null){
       var ctx = c.getContext("2d");
-      ctx.lineWidth = 5;
+      ctx.lineWidth = 50;
       var objs = this.state.buildState.getObjectsInScreen(this.state.point, this.state.width, 
         this.state.height, this.state.scale);
       ctx.beginPath();
-      for(var obj in objs){
-        let startP = obj['start']
-        let endP = obj['end']
+      for(var i = 0; i < objs.length; i++){
+        var obj = objs[i];
+        let startP = obj['start'];
+        let endP = obj['end'];
+        console.log(startP);
         ctx.moveTo(startP[0], startP[1]);
         ctx.lineTo(endP[0], endP[1]);
-      } 
+      }
       ctx.stroke();
     }
   }
