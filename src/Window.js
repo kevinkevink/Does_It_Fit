@@ -22,11 +22,11 @@ class Window extends React.Component{
       width: document.getElementById('view').offsetWidth,
       scale: 1
     });
-    this.drawGrid();
+    this.drawLines();
   }
 
   render(){
-    this.drawGrid();
+    this.drawLines();
     return(
       <div id='view'>
         <canvas id='canvas' width={this.state.width} height={this.state.height} >
@@ -37,10 +37,11 @@ class Window extends React.Component{
 
   }
 
-  drawGrid(){
+  drawLines(){
     var c = document.getElementById('canvas');
     if(c !== null){
       var ctx = c.getContext("2d");
+      ctx.beginPath()
       ctx.lineWidth = 50;
       var objs = this.state.buildState.getObjectsInScreen(this.state.point, this.state.width, 
         this.state.height, this.state.scale);
