@@ -10,7 +10,7 @@ class buildingState{
   //Can be more efficient by keeping two arrays in memmory
   getObjectsInScreen(point, actualWidth, actualHeight, scale){
     var virtualWidth = this.defaultVirtualWidth * scale;
-    var ratio = virtualWidth / width;
+    var ratio = virtualWidth / actualWidth;
     var virtualHeight = ratio * actualHeight;
     //Right now, point is always [0,0]. Will have to update calculations to move point around.
 
@@ -19,7 +19,7 @@ class buildingState{
     var endPoint = [point[0] + virtualWidth, point[1] + virtualHeight]
     for(var i = 0; i < this.objs.length; i++){
       let obj = this.objs[i]
-      if(obj.type === 'l'){
+      if(obj.type === 'l' || obj.type ==='gl'){
         let xFails = (obj.start[0] < point[0] && obj.start[0] < endPoint[0]) ||
         (obj.start[0] > point[0] && obj.start[0] > endPoint[0]);
         let yFails = (obj.start[1] < point[1] && obj.start[1] < endPoint[1]) ||
@@ -29,38 +29,28 @@ class buildingState{
         }
       }
     }
-    console.log(returns);
     return returns;
   }
 
   changeObjectRatio(obj, ratio){
-    returnObj = {'type': obj['type'], 'start': [...obj['start']], 'end': [...obj['end']]}
-    returnObj['start'] = returnObj['start'].map(val => val * ratio);
-    returnObj['end'] = returnObj['end'].map(val => val * ratio);
+    var returnObj = {'type': obj['type'], 'start': [...obj['start']], 'end': [...obj['end']]}
+    returnObj['start'] = returnObj['start'].map(val => val / ratio);
+    returnObj['end'] = returnObj['end'].map(val => val / ratio);
     return returnObj;
   }
 
   createGrid(){
-    //creates lines for grid based on this code
-    
-    /*
-    drawGrid(ctx){
-      var vLineNum = this.state.width / 100;
-      var hLineNum = this.state.height / 100;
-      ctx.lineWidth = 5;
-      for(var i = 0; i < vLineNum; i++){
-        ctx.moveTo(i * 100, 0 );
-        ctx.lineTo(i * 100, this.state.height);
-        ctx.stroke();
-      }
-      for(var i = 0; i < hLineNum; i++){
-        ctx.moveTo(0, i* 100);
-        ctx.lineTo(this.state.width, i * 100);
-      }
+    console.log('create Grid');
+    for(let i = 0; i < this.gridWidth + 1; i = i + 50){
+      this.objs.push({'type': 'gl', 'start': [i,0], 'end': [i, this.gridHeight]});
     }
-    */
-  }
-}
 
+    for(let i = 0; i < this.gridHeight + 1; i = i + 50){
+      this.objs.push({'type': 'gl', 'start': [0,i], 'end': [this.gridWidth, i]});
+    }
+    console.log(this.objs);
+  }
+
+}
 
 export default buildingState;

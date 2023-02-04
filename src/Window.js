@@ -50,14 +50,14 @@ class Window extends React.Component{
   }
 
   drawLines(ctx){
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 5;
     var objs = this.state.buildState.getObjectsInScreen(this.state.point, this.state.width, 
       this.state.height, this.state.scale);
     for(var i = 0; i < objs.length; i++){
       var obj = objs[i];
+      console.log(obj);
       let startP = obj['start'];
       let endP = obj['end'];
-      console.log(startP);
       ctx.moveTo(startP[0], startP[1]);
       ctx.lineTo(endP[0], endP[1]);
     }
