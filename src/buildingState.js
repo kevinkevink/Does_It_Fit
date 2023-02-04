@@ -11,7 +11,11 @@ class buildingState{
   getObjectsInScreen(point, actualWidth, actualHeight, scale){
     var virtualWidth = this.defaultVirtualWidth * scale;
     var ratio = virtualWidth / actualWidth;
-    var virtualHeight = ratio * actualHeight;
+    var virtualHeight = actualHeight;
+    var heightRatio = virtualHeight / actualHeight;
+    console.log('virtual Width:' + virtualWidth);
+    console.log('virtual Height:' + virtualHeight);
+    console.log('ratio:' + ratio);
     //Right now, point is always [0,0]. Will have to update calculations to move point around.
 
     //finish changing point
@@ -41,11 +45,11 @@ class buildingState{
 
   createGrid(){
     console.log('create Grid');
-    for(let i = 0; i < this.gridWidth + 1; i = i + 50){
+    for(let i = 0; i < this.gridWidth + 1; i = i + 10){
       this.objs.push({'type': 'gl', 'start': [i,0], 'end': [i, this.gridHeight]});
     }
 
-    for(let i = 0; i < this.gridHeight + 1; i = i + 50){
+    for(let i = 0; i < this.gridHeight + 1; i = i + 10){
       this.objs.push({'type': 'gl', 'start': [0,i], 'end': [this.gridWidth, i]});
     }
     console.log(this.objs);

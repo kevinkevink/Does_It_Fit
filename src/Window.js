@@ -29,6 +29,8 @@ class Window extends React.Component{
   }
 
   render(){
+    console.log('Window Width:' + this.state.width);
+    console.log('Window Height:' + this.state.height);
     return(
       <div id='view'>
         <canvas id='canvas' width={this.state.width} height={this.state.height} >
@@ -36,7 +38,6 @@ class Window extends React.Component{
         </canvas>
       </div>
     );
-
   }
 
   drawEverything(){
@@ -50,12 +51,11 @@ class Window extends React.Component{
   }
 
   drawLines(ctx){
-    ctx.lineWidth = 5;
+    ctx.lineWidth = this.state.scale;
     var objs = this.state.buildState.getObjectsInScreen(this.state.point, this.state.width, 
       this.state.height, this.state.scale);
     for(var i = 0; i < objs.length; i++){
       var obj = objs[i];
-      console.log(obj);
       let startP = obj['start'];
       let endP = obj['end'];
       ctx.moveTo(startP[0], startP[1]);
