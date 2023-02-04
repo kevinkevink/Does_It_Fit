@@ -45,23 +45,7 @@ class Window extends React.Component{
       var ctx = c.getContext("2d");
       ctx.beginPath()
       this.drawLines(ctx);
-      this.drawGrid(ctx);
       ctx.stroke();
-    }
-  }
-
-  drawGrid(ctx){
-    var vLineNum = this.state.width / 100;
-    var hLineNum = this.state.height / 100;
-    ctx.lineWidth = 5;
-    for(var i = 0; i < vLineNum; i++){
-      ctx.moveTo(i * 100, 0 );
-      ctx.lineTo(i * 100, this.state.height);
-      ctx.stroke();
-    }
-    for(var i = 0; i < hLineNum; i++){
-      ctx.moveTo(0, i* 100);
-      ctx.lineTo(this.state.width, i * 100);
     }
   }
 
