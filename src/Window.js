@@ -9,7 +9,7 @@ class Window extends React.Component{
       point: [0, 0],
       height: 0,
       width: 0,
-      scale: 1,
+      scale: 0.5,
       buildState: new buildingState()
     };
 
@@ -24,7 +24,7 @@ class Window extends React.Component{
       point: [0, 0],
       height: document.getElementById('view').offsetHeight,
       width: document.getElementById('view').offsetWidth,
-      scale: 1
+      scale: 0.5
     });
   }
 
