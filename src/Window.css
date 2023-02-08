@@ -3,11 +3,16 @@
     height: calc(100% - 65px);
     margin-top: 65px;
     margin: 0;
-    background-color: skyblue;
+    background-color: white;
     position:relative;
     top:65px;
+    z-index: 1;
 }
 canvas{
     width:100%;
     height:100%;
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: -1;
 }

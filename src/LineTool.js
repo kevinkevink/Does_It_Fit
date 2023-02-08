@@ -8,7 +8,7 @@ class LineTool extends React.Component{
 
   render(){
     return(
-      <button className ='toolButton'>
+      <button className ='toolButton' onClick={()=>{console.log('line')}}>
         Line
       </button>
     );

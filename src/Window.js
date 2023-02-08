@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Window.css';
 import buildingState from './buildingState';
+import ZoomButton from './ZoomButton';
 
 class Window extends React.Component{
   constructor(props){
@@ -12,7 +13,21 @@ class Window extends React.Component{
       scale: 0.5,
       buildState: new buildingState()
     };
+  }
 
+  zoomIn = () => {
+    this.setState({
+      scale: this.state.scale + 0.5
+    });
+    console.log('zoom in, scale = ' + this.state.scale);
+
+  }
+
+  zoomOut = () => {
+    this.setState({
+      scale: this.state.scale - 0.5
+    });
+    console.log('zoom out, scale = ' + this.state.scale);
   }
 
   componentDidUpdate(){
@@ -26,14 +41,16 @@ class Window extends React.Component{
       width: document.getElementById('view').offsetWidth,
       scale: 0.5
     });
+    console.log(this.state.scale);
   }
 
   render(){
-    console.log('Window Width:' + this.state.width);
-    console.log('Window Height:' + this.state.height);
+    //console.log('Window Width:' + this.state.width);
+    //console.log('Window Height:' + this.state.height);
     return(
       <div id='view'>
-        <canvas id='canvas' width={this.state.width} height={this.state.height} >
+        <ZoomButton zoomIn = {this.zoomIn} zoomOut = {this.zoomOut} />
+        <canvas id='canvas' width={this.state.width} height={this.state.height}>
           Canvas isn't working
         </canvas>
       </div>
@@ -62,6 +79,7 @@ class Window extends React.Component{
       ctx.lineTo(endP[0], endP[1]);
     }
   }
+
 }
 
 export default Window;

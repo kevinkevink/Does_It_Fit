@@ -13,9 +13,9 @@ class buildingState{
     var ratio = virtualWidth / actualWidth;
     var virtualHeight = actualHeight;
     var heightRatio = virtualHeight / actualHeight;
-    console.log('virtual Width:' + virtualWidth);
-    console.log('virtual Height:' + virtualHeight);
-    console.log('ratio:' + ratio);
+    //console.log('virtual Width:' + virtualWidth);
+    //console.log('virtual Height:' + virtualHeight);
+    //console.log('ratio:' + ratio);
     //Right now, point is always [0,0]. Will have to update calculations to move point around.
 
     //finish changing point
