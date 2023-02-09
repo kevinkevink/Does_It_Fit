@@ -10,24 +10,24 @@ class Window extends React.Component{
       point: [0, 0],
       height: 0,
       width: 0,
-      scale: 1.5,
+      scale: 10,
       buildState: new buildingState()
     };
   }
 
   zoomIn = () => {
-    if(this.state.scale <= 1.1){
+    if(this.state.scale <= 10){
       this.setState({
-        scale: this.state.scale + 0.1
+        scale: this.state.scale + 2
       });
     }
     console.log('zoom in, scale = ' + this.state.scale);
   }
 
   zoomOut = () => {
-    if(this.state.scale >= 0.11){
+    if(this.state.scale >= 1.1){
       this.setState({
-        scale: this.state.scale - 0.1
+        scale: this.state.scale - 2
       });
     }
     console.log('zoom out, scale = ' + this.state.scale);
@@ -37,14 +37,27 @@ class Window extends React.Component{
     this.drawEverything();
   }
 
+  onResize = () => {
+    console.log(this.state.height);
+    console.log(this.state.width);
+    this.setState({
+      point: this.state.point,
+      height: document.getElementById('view').offsetHeight,
+      width: document.getElementById('view').offsetWidth,
+      scale: this.state.scale
+    });
+    this.drawEverything();
+  }
+
   componentDidMount(){
     this.setState({
       point: [0, 0],
       height: document.getElementById('view').offsetHeight,
       width: document.getElementById('view').offsetWidth,
-      scale: 1.5
+      scale: 10
     });
     console.log(this.state.scale);
+    window.addEventListener('resize', this.onResize);
   }
 
   render(){

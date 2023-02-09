@@ -9,10 +9,10 @@ class ZoomButton extends React.Component{
   render(){
     return(
       <div id='zoomWrapper'>
-      <button className ='toolButton' onClick={this.props.zoomOut}>
+      <button className ='toolButton' onClick={this.props.zoomIn}>
         +
       </button>
-      <button className ='toolButton' onClick={this.props.zoomIn}>
+      <button className ='toolButton' onClick={this.props.zoomOut}>
         -
       </button>
     </div>
