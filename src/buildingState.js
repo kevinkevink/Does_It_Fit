@@ -9,9 +9,10 @@ class buildingState{
 
   //Can be more efficient by keeping two arrays in memmory
   getObjectsInScreen(point, actualWidth, actualHeight, scale){
-    var virtualWidth = this.defaultVirtualWidth * scale;
+    //var virtualWidth = this.defaultVirtualWidth * scale;
+    var virtualWidth = actualWidth * scale;
     var ratio = virtualWidth / actualWidth;
-    var virtualHeight = actualHeight;
+    var virtualHeight = actualHeight * scale;
     var heightRatio = virtualHeight / actualHeight;
     //console.log('virtual Width:' + virtualWidth);
     //console.log('virtual Height:' + virtualHeight);
